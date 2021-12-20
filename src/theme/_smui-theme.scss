@@ -8,10 +8,8 @@
   $secondary: #676778,
   $surface: #fff,
   $background: #fff,
-  $error: color-palette.$red-900,
+  $error: color-palette.$red-900
 );
-
-@use './app';
 
 html,
 body {
