@@ -1,38 +1,21 @@
-# create-svelte
+# Fixes to SMUI
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+It is widely known that SMUI is broken with SvelteKit/PNPM.
 
-## Creating a project
+You get `can't find stylesheet to import` errors regarding various sub-modules in material.
 
-If you're seeing this, you've probably already done this step. Congrats!
+To get around this you have to manually install those missing sub-modules `@material/*` into the top level node_modules.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+For more info on the workaround, see [issue-348](https://github.com/hperrin/svelte-material-ui/issues/348)
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+I repeatedly ran
 
-> Note: the `@next` is temporary
+    pnpm run prepare
 
-## Developing
+and then
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+    pnpm i -d @material/[name]
 
-```bash
-npm run dev
+for whatever came up as missing for the prepare.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+I only added enough to get Button, Card and Drawer working.
